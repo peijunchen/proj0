@@ -32,6 +32,9 @@ class Test(testLib.RestTestCase):
 	def testBadAdd_NameToolong(self):
         	respData = self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1'*100, 'password' : 'password'} )
         	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_USERNAME)
+	def testBadAdd_PasswordToolong(self):
+        	respData = self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1', 'password' : 'password'*100} )
+        	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_PASSWORD)
 	def testBadAdd_NameExist(self):
         	self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
         	respData = self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
@@ -47,6 +50,12 @@ class Test(testLib.RestTestCase):
 	def testBadLogin_WrongUsername(self):
 		self.makeRequest("/users/add", method="POST", data = { 'user' : 'user1', 'password' : 'password'} )
         	respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user2', 'password' : 'password'} )
+        	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_CREDENTIALS)
+	def testBadLogin_NameToolong(self):
+        	respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1'*100, 'password' : 'password'} )
+        	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_CREDENTIALS)
+	def testBadLogin_PasswordToolong(self):
+        	respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1', 'password' : 'password'*100} )
         	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_CREDENTIALS)
 
 

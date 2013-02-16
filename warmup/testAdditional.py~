@@ -55,8 +55,8 @@ class Test(testLib.RestTestCase):
         	respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1'*100, 'password' : 'password'} )
         	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_CREDENTIALS)
 	def testBadLogin_PasswordToolong(self):
-        	respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1'*100, 'password' : 'password'} )
-        	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_USERNAME)
+        	respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'user1', 'password' : 'password'*100} )
+        	self.assertResponse(respData, None, testLib.RestTestCase.ERR_BAD_CREDENTIALS)
 
 
 

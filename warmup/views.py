@@ -8,7 +8,7 @@ from django.http import Http404
 import unittest
 import StringIO
 import json
-from testAdditional import Test
+from testAdditional import TestCase
 
 SUCCESS               =   1  # : a success
 ERR_BAD_CREDENTIALS   =  -1  # : (for login only) cannot find the user/password pair in the database

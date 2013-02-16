@@ -9,7 +9,7 @@ ERR_USER_EXISTS       =  -2  # : (for add only) trying to add a user that alread
 ERR_BAD_USERNAME      =  -3  # : (for add, or login) invalid user name (only empty string is invalid for now)
 ERR_BAD_PASSWORD      =  -4
 
-class Test(testLib.RestTestCase):
+class TestCase(testLib.RestTestCase):
     	"""Test adding users"""
 	def assertResponse(self, respData, count = 1, errCode = testLib.RestTestCase.SUCCESS):
         	"""

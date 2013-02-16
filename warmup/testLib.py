@@ -21,7 +21,7 @@ class RestTestCase(unittest.TestCase):
     ERR_BAD_PASSWORD    = -4
     
     # Lookup the name of the server to test
-    serverToTest = "localhost:8080"
+    serverToTest = "fast-hollows-4122.herokuapp.com"
     if "TEST_SERVER" in os.environ:
         serverToTest = os.environ["TEST_SERVER"]
 
